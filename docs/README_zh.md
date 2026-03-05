@@ -23,6 +23,8 @@
 
 ---
 
+> **📢 公告：** 下个版本将修复与 Claude Code v2.1.69+ 的兼容性问题，该版本在使用 ToolSearch 延迟工具机制时会在 `tool_result` 消息中发送 `tool_reference` 内容块。
+
 KiroaaS（Kiro 即服务）是一个桌面网关应用，通过本地 OpenAI 兼容和 Anthropic 兼容的 API 暴露 Kiro 的 AI 模型。无需修改代码，即可使用您喜爱的 AI 工具、库和应用程序与 Kiro 交互。
 
 ## ✨ 功能特性

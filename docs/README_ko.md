@@ -23,6 +23,8 @@
 
 ---
 
+> **📢 공지사항:** 다음 버전에서는 Claude Code v2.1.69+와의 호환성 문제를 수정할 예정입니다. 이 버전은 ToolSearch 지연 도구 메커니즘을 사용할 때 `tool_result` 메시지 내에 `tool_reference` 콘텐츠 블록을 전송합니다.
+
 KiroaaS(Kiro as a Service)는 로컬 OpenAI 호환 및 Anthropic 호환 API를 통해 Kiro의 AI 모델을 제공하는 데스크톱 게이트웨이입니다. 코드 변경 없이 좋아하는 AI 도구, 라이브러리, 애플리케이션에서 Kiro를 사용하세요.
 
 ## ✨ 기능

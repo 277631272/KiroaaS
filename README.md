@@ -22,6 +22,8 @@
 
 ---
 
+> **📢 Notice:** The next version will fix compatibility with Claude Code v2.1.69+, which sends `tool_reference` content blocks inside `tool_result` messages when using the ToolSearch deferred tool mechanism.
+
 KiroaaS (Kiro as a Service) is a desktop gateway that exposes Kiro's AI models through a local OpenAI-compatible and Anthropic-compatible API. Use your favorite AI tools, libraries, and applications with Kiro - no code changes required.
 
 ## ✨ Features

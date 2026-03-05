@@ -23,6 +23,8 @@
 
 ---
 
+> **📢 Aviso:** La próxima versión corregirá la compatibilidad con Claude Code v2.1.69+, que envía bloques de contenido `tool_reference` dentro de mensajes `tool_result` al usar el mecanismo de herramientas diferidas ToolSearch.
+
 KiroaaS (Kiro as a Service) es una pasarela de escritorio que expone los modelos de IA de Kiro a través de una API local compatible con OpenAI y Anthropic. Usa tus herramientas, bibliotecas y aplicaciones de IA favoritas con Kiro, sin necesidad de cambiar el código.
 
 ## ✨ Características
