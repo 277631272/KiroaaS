@@ -92,7 +92,7 @@ curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_PROXY_API_KEY" \
   -d '{
-    "model": "claude-sonnet-4-5",
+    "model": "claude-sonnet-4-6",
     "messages": [{"role": "user", "content": "Halo!"}]
   }'
 ```
@@ -108,7 +108,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="claude-sonnet-4-5",
+    model="claude-sonnet-4-6",
     messages=[{"role": "user", "content": "Halo!"}]
 )
 print(response.choices[0].message.content)
@@ -125,7 +125,7 @@ const client = new OpenAI({
 });
 
 const response = await client.chat.completions.create({
-  model: 'claude-sonnet-4-5',
+  model: 'claude-sonnet-4-6',
   messages: [{ role: 'user', content: 'Halo!' }],
 });
 console.log(response.choices[0].message.content);

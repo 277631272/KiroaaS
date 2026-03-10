@@ -81,7 +81,7 @@ export function ChatView({
   const [input, setInput] = useState('');
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [model, setModel] = useState('claude-sonnet-4-5');
+  const [model, setModel] = useState('claude-sonnet-4-6');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -268,7 +268,7 @@ export function ChatView({
 
   const models = [
     'claude-opus-4-6',
-    'claude-sonnet-4-5',
+    'claude-sonnet-4-6',
     'claude-opus-4-5',
     'claude-haiku-4-5',
   ];

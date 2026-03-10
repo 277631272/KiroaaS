@@ -18,7 +18,8 @@ export function ApiExamples({ host, port, apiKey }: ApiExamplesProps) {
   const [codeType, setCodeType] = useState<CodeType>('curl');
   const [copied, setCopied] = useState(false);
 
-  const baseUrl = `http://${host}:${port}`;
+  const displayHost = host === '0.0.0.0' ? '127.0.0.1' : host;
+  const baseUrl = `http://${displayHost}:${port}`;
   const displayApiKey = apiKey || 'YOUR_API_KEY';
 
   const examples: Record<ApiType, Record<CodeType, string>> = {
@@ -27,7 +28,7 @@ export function ApiExamples({ host, port, apiKey }: ApiExamplesProps) {
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer ${displayApiKey}" \\
   -d '{
-    "model": "claude-sonnet-4-5",
+    "model": "claude-sonnet-4-6",
     "messages": [
       {"role": "user", "content": "Hello!"}
     ]
@@ -40,7 +41,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="claude-sonnet-4-5",
+    model="claude-sonnet-4-6",
     messages=[
         {"role": "user", "content": "Hello!"}
     ]
@@ -55,7 +56,7 @@ const client = new OpenAI({
 });
 
 const response = await client.chat.completions.create({
-  model: 'claude-sonnet-4-5',
+  model: 'claude-sonnet-4-6',
   messages: [
     { role: 'user', content: 'Hello!' }
   ],
@@ -69,7 +70,7 @@ console.log(response.choices[0].message.content);`,
   -H "x-api-key: ${displayApiKey}" \\
   -H "anthropic-version: 2023-06-01" \\
   -d '{
-    "model": "claude-sonnet-4-5",
+    "model": "claude-sonnet-4-6",
     "max_tokens": 1024,
     "messages": [
       {"role": "user", "content": "Hello!"}
@@ -83,7 +84,7 @@ client = anthropic.Anthropic(
 )
 
 message = client.messages.create(
-    model="claude-sonnet-4-5",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[
         {"role": "user", "content": "Hello!"}
@@ -99,7 +100,7 @@ const client = new Anthropic({
 });
 
 const message = await client.messages.create({
-  model: 'claude-sonnet-4-5',
+  model: 'claude-sonnet-4-6',
   max_tokens: 1024,
   messages: [
     { role: 'user', content: 'Hello!' }

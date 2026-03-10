@@ -16,7 +16,8 @@ export function CCSwitchImport({ host, port, apiKey }: CCSwitchImportProps) {
   const [imported, setImported] = useState(false);
   const [showApiKey, setShowApiKey] = useState(false);
 
-  const endpoint = `http://${host}:${port}`;
+  const displayHost = host === '0.0.0.0' ? '127.0.0.1' : host;
+  const endpoint = `http://${displayHost}:${port}`;
 
   const handleImport = async () => {
     if (!apiKey) {
