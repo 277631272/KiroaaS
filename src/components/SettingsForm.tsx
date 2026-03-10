@@ -2,6 +2,7 @@ import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import { useI18n } from '@/hooks/useI18n';
 import type { AppConfig, AuthMethod } from '@/lib/config';
 import { scanAllCredentials, type CredentialScanResult, /* installUpdate, */ getAppVersion } from '@/lib/tauri';
+import { open as shellOpen } from '@tauri-apps/api/shell';
 import { checkVersionUpdate, type UpdateInfo } from '@/lib/versionCheck';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -187,8 +188,8 @@ export const SettingsForm = forwardRef<SettingsFormHandle, SettingsFormProps>(fu
         //     setIsInstalling(false);
         // }
 
-        // 临时：跳转官网下载
-        window.open('https://kiroaas.hnew.city', '_blank');
+        // 临时：用系统浏览器打开官网下载
+        await shellOpen('https://kiroaas.hnew.city');
     };
 
     const hintEnter = (key: SettingsHintKey) => () => onHintChange?.(key);
