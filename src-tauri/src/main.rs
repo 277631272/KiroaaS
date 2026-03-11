@@ -87,14 +87,8 @@ struct AppState {
     conversations_lock: Mutex<()>,
 }
 
-/// Start the Python server with the given configuration
-#[tauri::command]
-async fn start_server(
-    config: AppConfig,
-    state: State<'_, AppState>,
-) -> Result<ServerStatus, String> {
-    // Validate that credentials are configured for the selected auth method
-    let has_credentials = match &config.auth_method {
+fn has_credentials(config: &AppConfig) -> bool {
+    match &config.auth_method {
         crate::config::AuthMethod::RefreshToken => {
             config.refresh_token.as_ref().map_or(false, |t| !t.is_empty())
         }
@@ -104,9 +98,17 @@ async fn start_server(
         crate::config::AuthMethod::CliDb => {
             config.kiro_cli_db_file.as_ref().map_or(false, |d| !d.is_empty())
         }
-    };
+    }
+}
 
-    if !has_credentials {
+/// Start the Python server with the given configuration
+#[tauri::command]
+async fn start_server(
+    config: AppConfig,
+    state: State<'_, AppState>,
+) -> Result<ServerStatus, String> {
+    // Validate that credentials are configured for the selected auth method
+    if !has_credentials(&config) {
         return Err("No credentials configured. Please set up authentication in Settings first.".to_string());
     }
 
@@ -576,11 +578,25 @@ fn main() {
             #[cfg(target_os = "macos")]
             macos_dock::setup_dock_click_handler(app.handle());
 
-            tauri::async_runtime::spawn(async {
+            let app_handle = app.handle();
+            tauri::async_runtime::spawn(async move {
                 match load_config().await {
                     Ok(config) => {
                         if let Err(e) = apply_auto_launch(config.auto_launch) {
                             eprintln!("[Setup] Auto-launch apply failed: {}", e);
+                        }
+
+                        if config.auto_start_server {
+                            if !has_credentials(&config) {
+                                eprintln!("[Setup] Auto-start server skipped: missing credentials");
+                                return;
+                            }
+
+                            let state: State<AppState> = app_handle.state();
+                            let mut manager = state.server_manager.lock().await;
+                            if let Err(e) = manager.start(config).await {
+                                eprintln!("[Setup] Auto-start server failed: {}", e);
+                            }
                         }
                     }
                     Err(e) => eprintln!("[Setup] Failed to load config for auto-launch: {}", e),

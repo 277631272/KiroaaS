@@ -41,6 +41,8 @@ pub struct AppConfig {
     // System
     #[serde(default)]
     pub auto_launch: bool,
+    #[serde(default)]
+    pub auto_start_server: bool,
 
     // Client identity
     #[serde(default)]
@@ -67,6 +69,7 @@ impl Default for AppConfig {
             log_level: "INFO".to_string(),
             debug_mode: "off".to_string(),
             auto_launch: false,
+            auto_start_server: false,
             client_id: None,
         }
     }
