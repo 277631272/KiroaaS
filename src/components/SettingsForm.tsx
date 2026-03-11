@@ -369,6 +369,19 @@ export const SettingsForm = forwardRef<SettingsFormHandle, SettingsFormProps>(fu
                             onCheckedChange={(checked) => updateField('auto_launch', checked)}
                         />
                     </div>
+                    <div className="mt-6 flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                            <Power className="h-5 w-5 text-stone-400" />
+                            <div>
+                                <Label className="text-sm font-semibold text-[#111]">{t('autoStartServer')}</Label>
+                                <p className="text-xs text-stone-500 mt-0.5">{t('autoStartServerDesc')}</p>
+                            </div>
+                        </div>
+                        <Switch
+                            checked={formData.auto_start_server}
+                            onCheckedChange={(checked) => updateField('auto_start_server', checked)}
+                        />
+                    </div>
                 </div>
             </div>
 

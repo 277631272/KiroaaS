@@ -33,6 +33,7 @@ export interface AppConfig {
 
   // System
   auto_launch: boolean;
+  auto_start_server: boolean;
 
   // Client identity
   client_id?: string;
@@ -52,6 +53,7 @@ export const DEFAULT_CONFIG: AppConfig = {
   log_level: 'INFO',
   debug_mode: 'off',
   auto_launch: false,
+  auto_start_server: false,
 };
 
 export interface ServerStatusInfo {
