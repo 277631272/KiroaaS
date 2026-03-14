@@ -268,6 +268,16 @@ export const translations = {
     updateCheckFailed: '检查更新失败',
     installing: '安装中...',
     changelog: '更新日志',
+
+    // Usage Card
+    creditUsage: 'Credit 用量',
+    usageServerOffline: '启动服务器后查看用量',
+    usageLoadFailed: '加载用量失败',
+    usageUsed: '已使用',
+    usageResets: '重置于',
+    usageOverage: '超额用量',
+    usageOverageOn: '已开启',
+    usageOverageOff: '已关闭',
   },
   en: {
     // App
@@ -532,6 +542,16 @@ export const translations = {
     updateCheckFailed: 'Failed to check for updates',
     installing: 'Installing...',
     changelog: 'Changelog',
+
+    // Usage Card
+    creditUsage: 'Credit Usage',
+    usageServerOffline: 'Start the server to view usage',
+    usageLoadFailed: 'Failed to load usage',
+    usageUsed: 'Used',
+    usageResets: 'Resets',
+    usageOverage: 'Overage',
+    usageOverageOn: 'Enabled',
+    usageOverageOff: 'Disabled',
   },
   ru: {
     // App
@@ -800,6 +820,16 @@ export const translations = {
     updateCheckFailed: 'Не удалось проверить обновления',
     installing: 'Установка...',
     changelog: 'Список изменений',
+
+    // Usage Card
+    creditUsage: 'Использование кредитов',
+    usageServerOffline: 'Запустите сервер для просмотра',
+    usageLoadFailed: 'Ошибка загрузки',
+    usageUsed: 'Использовано',
+    usageResets: 'Сброс',
+    usageOverage: 'Превышение',
+    usageOverageOn: 'Включено',
+    usageOverageOff: 'Отключено',
   },
   es: {
     // App
@@ -1068,6 +1098,16 @@ export const translations = {
     updateCheckFailed: 'Error al buscar actualizaciones',
     installing: 'Instalando...',
     changelog: 'Registro de cambios',
+
+    // Usage Card
+    creditUsage: 'Uso de créditos',
+    usageServerOffline: 'Inicia el servidor para ver el uso',
+    usageLoadFailed: 'Error al cargar',
+    usageUsed: 'Usado',
+    usageResets: 'Reinicia',
+    usageOverage: 'Excedente',
+    usageOverageOn: 'Activado',
+    usageOverageOff: 'Desactivado',
   },
   id: {
     // App
@@ -1336,6 +1376,16 @@ export const translations = {
     updateCheckFailed: 'Gagal memeriksa pembaruan',
     installing: 'Menginstal...',
     changelog: 'Catatan perubahan',
+
+    // Usage Card
+    creditUsage: 'Penggunaan Kredit',
+    usageServerOffline: 'Mulai server untuk melihat penggunaan',
+    usageLoadFailed: 'Gagal memuat penggunaan',
+    usageUsed: 'Digunakan',
+    usageResets: 'Reset',
+    usageOverage: 'Kelebihan',
+    usageOverageOn: 'Aktif',
+    usageOverageOff: 'Nonaktif',
   },
   pt: {
     // App
@@ -1604,6 +1654,16 @@ export const translations = {
     updateCheckFailed: 'Falha ao verificar atualizações',
     installing: 'Instalando...',
     changelog: 'Registro de alterações',
+
+    // Usage Card
+    creditUsage: 'Uso de Créditos',
+    usageServerOffline: 'Inicie o servidor para ver o uso',
+    usageLoadFailed: 'Falha ao carregar uso',
+    usageUsed: 'Usado',
+    usageResets: 'Reinicia',
+    usageOverage: 'Excedente',
+    usageOverageOn: 'Ativado',
+    usageOverageOff: 'Desativado',
   },
   ja: {
     // App
@@ -1872,6 +1932,16 @@ export const translations = {
     updateCheckFailed: 'アップデートの確認に失敗しました',
     installing: 'インストール中...',
     changelog: '変更履歴',
+
+    // Usage Card
+    creditUsage: 'クレジット使用量',
+    usageServerOffline: 'サーバーを起動して使用量を確認',
+    usageLoadFailed: '使用量の読み込みに失敗',
+    usageUsed: '使用済み',
+    usageResets: 'リセット',
+    usageOverage: '超過',
+    usageOverageOn: '有効',
+    usageOverageOff: '無効',
   },
   ko: {
     // App
@@ -2140,6 +2210,16 @@ export const translations = {
     updateCheckFailed: '업데이트 확인 실패',
     installing: '설치 중...',
     changelog: '변경 내역',
+
+    // Usage Card
+    creditUsage: '크레딧 사용량',
+    usageServerOffline: '서버를 시작하여 사용량 확인',
+    usageLoadFailed: '사용량 로드 실패',
+    usageUsed: '사용됨',
+    usageResets: '초기화',
+    usageOverage: '초과',
+    usageOverageOn: '활성화',
+    usageOverageOff: '비활성화',
   },
 };
 

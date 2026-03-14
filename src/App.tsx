@@ -5,6 +5,7 @@ import { LogViewer } from './components/LogViewer';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { ApiExamples } from './components/ApiExamples';
 import { CCSwitchImport } from './components/CCSwitchImport';
+import { UsageCard } from './components/UsageCard';
 import { ChatView } from './components/ChatView';
 import { useConfig } from './hooks/useConfig';
 import { useI18n } from './hooks/useI18n';
@@ -507,8 +508,8 @@ export default function App() {
 
                 </div>
 
-                {/* API Examples and CC Switch Import */}
-                <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* API Examples, CC Switch Import, and Usage */}
+                <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-3 gap-4">
                   {/* API Examples Card */}
                   <div className="bg-white rounded-[32px] p-5 shadow-sm flex flex-col lg:min-h-[280px]">
                     <ApiExamples
@@ -524,6 +525,16 @@ export default function App() {
                       host={config.server_host}
                       port={config.server_port}
                       apiKey={config.proxy_api_key}
+                    />
+                  </div>
+
+                  {/* Usage Card */}
+                  <div className="bg-white rounded-[32px] p-5 shadow-sm flex flex-col lg:min-h-[280px]">
+                    <UsageCard
+                      host={config.server_host}
+                      port={config.server_port}
+                      apiKey={config.proxy_api_key}
+                      isRunning={isRunning}
                     />
                   </div>
                 </div>
