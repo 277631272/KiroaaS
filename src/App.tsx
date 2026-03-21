@@ -90,7 +90,7 @@ export default function App() {
 
   // Sync tray menu items with server state
   useEffect(() => {
-    updateTrayServerState(isRunning).catch(() => {});
+    updateTrayServerState(isRunning).catch(() => { });
   }, [isRunning]);
 
   // Sync temp config
@@ -108,15 +108,15 @@ export default function App() {
       .then(([v, p, a, o, d]) => {
         cachedInfo = { currentVersion: v, platform: p, arch: a, osVersion: o, deviceModel: d };
       })
-      .catch(() => {});
+      .catch(() => { });
 
     // 1. App start
-    checkVersionUpdate(config, 'app_start').catch(() => {});
+    checkVersionUpdate(config, 'app_start').catch(() => { });
 
     // 3. Scheduled every 6 hours
     const SIX_HOURS = 6 * 60 * 60 * 1000;
     const interval = setInterval(() => {
-      checkVersionUpdate(config, 'scheduled').catch(() => {});
+      checkVersionUpdate(config, 'scheduled').catch(() => { });
     }, SIX_HOURS);
 
     // 2. App close (beforeunload)
@@ -346,38 +346,38 @@ export default function App() {
                 {/* Main Action Button */}
                 {currentView === 'dashboard' && (
                   <>
-                  <Button
-                    className={`h-12 rounded-full px-6 font-semibold shadow-lg transition-all duration-300 ${isRunning
-                      ? 'bg-black text-white hover:bg-stone-800'
-                      : 'bg-black text-white hover:bg-stone-800'
-                      }`}
-                    onClick={isRunning ? handleStop : handleStart}
-                    disabled={isProcessing || (!isRunning && !config.proxy_api_key)}
-                  >
-                    {isStarting || isStopping ? (
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    ) : isRunning ? (
-                      <Square className="mr-2 h-5 w-5 fill-current" />
-                    ) : (
-                      <Play className="mr-2 h-5 w-5 fill-current" />
-                    )}
-                    {isRunning ? (isStopping ? t('stopping') : t('stopServer')) : (isStarting ? t('starting') : t('startServer'))}
-                  </Button>
-                  {isRunning && (
                     <Button
-                      variant="outline"
-                      className="h-12 rounded-full px-6 font-semibold border-stone-300 hover:bg-stone-100 transition-all duration-300"
-                      onClick={handleRestartServer}
-                      disabled={isProcessing}
+                      className={`h-12 rounded-full px-6 font-semibold shadow-lg transition-all duration-300 ${isRunning
+                        ? 'bg-black text-white hover:bg-stone-800'
+                        : 'bg-black text-white hover:bg-stone-800'
+                        }`}
+                      onClick={isRunning ? handleStop : handleStart}
+                      disabled={isProcessing || (!isRunning && !config.proxy_api_key)}
                     >
-                      {isRestarting ? (
+                      {isStarting || isStopping ? (
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      ) : isRunning ? (
+                        <Square className="mr-2 h-5 w-5 fill-current" />
                       ) : (
-                        <RotateCw className="mr-2 h-5 w-5" />
+                        <Play className="mr-2 h-5 w-5 fill-current" />
                       )}
-                      {isRestarting ? t('starting') : t('restartServer')}
+                      {isRunning ? (isStopping ? t('stopping') : t('stopServer')) : (isStarting ? t('starting') : t('startServer'))}
                     </Button>
-                  )}
+                    {isRunning && (
+                      <Button
+                        variant="outline"
+                        className="h-12 rounded-full px-6 font-semibold border-stone-300 hover:bg-stone-100 transition-all duration-300"
+                        onClick={handleRestartServer}
+                        disabled={isProcessing}
+                      >
+                        {isRestarting ? (
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        ) : (
+                          <RotateCw className="mr-2 h-5 w-5" />
+                        )}
+                        {isRestarting ? t('starting') : t('restartServer')}
+                      </Button>
+                    )}
                   </>
                 )}
 
