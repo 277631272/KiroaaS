@@ -13,6 +13,8 @@ use server::{ServerManager, ServerStatus};
 use tauri::{Manager, State, SystemTray, SystemTrayEvent, SystemTrayMenu, CustomMenuItem, AppHandle};
 use tokio::sync::Mutex;
 use std::process::Command;
+#[cfg(windows)]
+use std::os::windows::process::CommandExt;
 
 #[cfg(target_os = "macos")]
 mod macos_dock {
@@ -198,7 +200,7 @@ fn apply_auto_launch(enabled: bool) -> Result<(), String> {
 
     let app_str = app_path.to_str()
         .ok_or_else(|| "App path is not valid UTF-8".to_string())?;
-    let auto = AutoLaunch::new("KiroaaS", app_str, true, &[] as &[&str]);
+    let auto = AutoLaunch::new("KiroaaS", app_str, &[] as &[&str]);
     if enabled {
         auto.enable().map_err(|e| format!("Failed to enable auto-launch: {}", e))
     } else {
