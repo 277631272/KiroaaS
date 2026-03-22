@@ -49,11 +49,26 @@ cd python-backend/build/dist
 tar czf ../../../src-tauri/resources/kiro-gateway.tar.gz kiro-gateway
 cd ../../..
 
+# Workaround: macOS 15+ removed xattr -r flag, but Tauri 1.x uses `xattr -cr` internally
+XATTR_SHIM_DIR=$(mktemp -d)
+cat > "$XATTR_SHIM_DIR/xattr" << 'SHIM'
+#!/bin/bash
+if [[ "$*" == *-*r* ]]; then
+  find "${@: -1}" -exec /usr/bin/xattr -c {} \; 2>/dev/null
+  exit 0
+fi
+/usr/bin/xattr "$@"
+SHIM
+chmod +x "$XATTR_SHIM_DIR/xattr"
+export PATH="$XATTR_SHIM_DIR:$PATH"
+
 # Build Tauri app
 echo "Building macOS app..."
 export TAURI_PRIVATE_KEY=$(cat ~/.tauri/kiroaas.key)
 export TAURI_KEY_PASSWORD=""
 npm run tauri:build
+
+rm -rf "$XATTR_SHIM_DIR"
 
 echo ""
 echo "=== Build Complete ==="
